@@ -4,7 +4,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-    public float jumpForce = 9f;
+    public float jumpForce = 8f;
 
     public Rigidbody2D rb;
     public SpriteRenderer sr;
@@ -19,6 +19,8 @@ public class Player : MonoBehaviour {
     public AudioSource deathSound;
 
     public bool isGameOver = false;
+
+    public Score sc;
 
     void Start() {
         isGameOver = false;
@@ -54,11 +56,16 @@ public class Player : MonoBehaviour {
             return;
         }
 
-        if(col.tag != currentColor) {
-            if(!isGameOver) {
+        if(!isGameOver) {
+            if(col.tag != "Points" && col.tag != currentColor) {
                 isGameOver = true;
                 deathSound.Play();
                 StartCoroutine(delayAction(1));
+            }
+
+            if(col.tag == "Points") {
+                sc.score = 1 + sc.score;
+                Destroy(col.gameObject);
             }
         }
     }

@@ -9,6 +9,8 @@ TagManager:
   - Magenta
   - Yellow
   - ColorChanger
+  - Circle
+  - Points
   layers:
   - Default
   - TransparentFX
