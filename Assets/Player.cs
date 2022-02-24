@@ -18,14 +18,30 @@ public class Player : MonoBehaviour {
     public AudioSource changeColorSound;
     public AudioSource deathSound;
 
+    public bool isGameOver = false;
+
     void Start() {
+        isGameOver = false;
+        Physics2D.gravity = new Vector2(0f, 0f);
         setRandomColor();
     }
 
     void Update() {
         if(Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) {
-            rb.velocity = Vector2.up * jumpForce;
-            jumpSound.Play();
+            Physics2D.gravity = new Vector2(0f, -9.8f);
+            if(!isGameOver) {
+                if(Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) {
+                    rb.velocity = Vector2.up * jumpForce;
+                    jumpSound.Play();
+                }
+            }
+        }
+        if(!isGameOver) {
+            if(transform.position.y <= -6) {
+                isGameOver = true;
+                deathSound.Play();
+                StartCoroutine(delayAction(1));
+            }
         }
     }
 
@@ -39,12 +55,16 @@ public class Player : MonoBehaviour {
         }
 
         if(col.tag != currentColor) {
-            deathSound.Play();
-            StartCoroutine(delayAction(1));
+            if(!isGameOver) {
+                isGameOver = true;
+                deathSound.Play();
+                StartCoroutine(delayAction(1));
+            }
         }
     }
 
     IEnumerator delayAction(float delayTime) {
+
         yield return new WaitForSeconds(delayTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
