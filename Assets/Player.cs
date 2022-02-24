@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Player : MonoBehaviour {
 
@@ -13,10 +14,9 @@ public class Player : MonoBehaviour {
     public Color[] colors = { new Color32(53, 226, 242, 255), new Color32(255, 0, 128, 255), new Color32(246, 223, 14, 255), new Color32(140, 19, 251, 255) };
     public string[] colorNames = {"Cyan", "Pink", "Yellow", "Magenta"}; 
 
-    public Color colorCyan;
-    public Color colorPink;
-    public Color colorYellow;
-    public Color colorMagenta;
+    public AudioSource jumpSound;
+    public AudioSource changeColorSound;
+    public AudioSource deathSound;
 
     void Start() {
         setRandomColor();
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour {
     void Update() {
         if(Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) {
             rb.velocity = Vector2.up * jumpForce;
+            jumpSound.Play();
         }
     }
 
@@ -32,15 +33,21 @@ public class Player : MonoBehaviour {
 
         if(col.tag == "ColorChanger") {
             setRandomColor();
+            changeColorSound.Play();
             Destroy(col.gameObject);
             return;
         }
 
         if(col.tag != currentColor) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            deathSound.Play();
+            StartCoroutine(delayAction(1));
         }
     }
 
+    IEnumerator delayAction(float delayTime) {
+        yield return new WaitForSeconds(delayTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     void setRandomColor() {
 
         int index;
