@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
     public AudioSource jumpSound;
     public AudioSource changeColorSound;
     public AudioSource deathSound;
+    public AudioSource pointSound;
 
     public bool isGameOver = false;
 
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour {
 
             if(col.tag == "Points") {
                 sc.score = 1 + sc.score;
+                pointSound.Play();
                 Destroy(col.gameObject);
             }
         }
