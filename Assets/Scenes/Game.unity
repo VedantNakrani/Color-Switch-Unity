@@ -467,7 +467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 416.2, y: 2172}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &527743697
@@ -816,7 +816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1036}
+  m_AnchoredPosition: {x: 0, y: -1060}
   m_SizeDelta: {x: 248.602, y: 89.8541}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1295133264
@@ -990,7 +990,7 @@ MonoBehaviour:
   rb: {fileID: 1797337878}
   sr: {fileID: 1797337880}
   clickToPlay: {fileID: 904030380}
-  quitButton: {fileID: 52953587}
+  quitButton: {fileID: 1295133264}
   currentColor: 
   colors:
   - {r: 0.20784314, g: 0.8862745, b: 0.9490196, a: 1}
@@ -1626,7 +1626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -438.18738, y: 1154.1632}
+  m_AnchoredPosition: {x: -438.18, y: 1112}
   m_SizeDelta: {x: 203.6338, y: 91.7484}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2120504469
