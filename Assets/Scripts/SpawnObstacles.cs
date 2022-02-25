@@ -26,6 +26,6 @@ public class SpawnObstacles : MonoBehaviour {
 
         Instantiate(circle, transform.position + new Vector3(0, positionY, 0), transform.rotation);
         Instantiate(star, transform.position + new Vector3(0, positionY, 0), transform.rotation);
-        Instantiate(colorChanger, transform.position + new Vector3(0, positionY + 2, 0), transform.rotation);
+        Instantiate(colorChanger, transform.position + new Vector3(0, positionY + 2.5f, 0), transform.rotation);
     }
 }

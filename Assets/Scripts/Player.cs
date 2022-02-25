@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     public SpriteRenderer sr;
 
     public GameObject clickToPlay;
+    public GameObject quitButton;
 
     public string currentColor;
 
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour {
         if(Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) {
             Physics2D.gravity = new Vector2(0f, -9.8f);
             clickToPlay.SetActive(false);
+            quitButton.SetActive(false);
             if(!isGameOver) {
                 if(Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) {
                     rb.velocity = Vector2.up * jumpForce;
