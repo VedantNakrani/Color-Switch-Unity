@@ -9,7 +9,6 @@ public class SpawnObstacles : MonoBehaviour {
 
     public Score sc;
     int prevScore = 0;
-    int i = 0;
 
     void Start() {
         SpawnCircle(0);
@@ -24,7 +23,8 @@ public class SpawnObstacles : MonoBehaviour {
     }
 
     void SpawnCircle(int positionY) {
-        Instantiate(circle, transform.position + new Vector3(0, positionY, 0), transform.rotation * Quaternion.Euler(Vector3.forward * 100));
+
+        Instantiate(circle, transform.position + new Vector3(0, positionY, 0), transform.rotation);
         Instantiate(star, transform.position + new Vector3(0, positionY, 0), transform.rotation);
         Instantiate(colorChanger, transform.position + new Vector3(0, positionY + 2, 0), transform.rotation);
     }
