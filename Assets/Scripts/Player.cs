@@ -9,6 +9,8 @@ public class Player : MonoBehaviour {
     public Rigidbody2D rb;
     public SpriteRenderer sr;
 
+    public GameObject clickToPlay;
+
     public string currentColor;
 
     public Color[] colors = { new Color32(53, 226, 242, 255), new Color32(255, 0, 128, 255), new Color32(246, 223, 14, 255), new Color32(140, 19, 251, 255) };
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour {
     void Update() {
         if(Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) {
             Physics2D.gravity = new Vector2(0f, -9.8f);
+            clickToPlay.SetActive(false);
             if(!isGameOver) {
                 if(Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0)) {
                     rb.velocity = Vector2.up * jumpForce;
